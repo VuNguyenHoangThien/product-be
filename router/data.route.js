@@ -24,8 +24,8 @@ const data_controller = require('../home/data.controller');
 // router.get('/crawlingData', data_controller.crawlingData);
 // router.post('/searchData', data_controller.searchData);
 
-router.post('/login', user_controller.login);
-router.post('/register', user_controller.register)
+router.post('/user-login', user_controller.login);
+router.post('/user-register', user_controller.register)
 
 router.get('/getProduct', user_controller.secret, data_controller.getData);
 // router.get('/testDataJoin', user_controller.secret, data_controller.getDataJoin);

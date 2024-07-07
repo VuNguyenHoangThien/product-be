@@ -12,7 +12,7 @@ var http = require('http');
 var ObjectID = require('mongodb').ObjectID;
 var port = process.env.PORT || 3000;
 var app = Express();
-app.use(cors({ credentials: true, origin: 'http://localhost:4200'}));
+app.use(cors({ origin: '*', credentials: true}));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 // const CONNECTION_URL = "mongodb+srv://vuNHT:PHIhung@123@cluster0-vwx6r.mongodb.net/test?retryWrites=true&w=majority";
