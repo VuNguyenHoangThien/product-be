@@ -18,20 +18,20 @@ const data_controller = require('../home/data.controller');
 //     }
 // }
 // router.get('/jwt', user_controller.jwt);
-router.get('/secret', user_controller.secret);
+// router.get('/secret', user_controller.secret);
 // router.get('/websocket', socket_controller.socket);
 
-router.get('/crawlingData', data_controller.crawlingData);
-router.post('/searchData', data_controller.searchData);
+// router.get('/crawlingData', data_controller.crawlingData);
+// router.post('/searchData', data_controller.searchData);
 
 router.post('/login', user_controller.login);
 router.post('/register', user_controller.register)
 
 router.get('/getProduct', user_controller.secret, data_controller.getData);
-router.get('/testDataJoin', user_controller.secret, data_controller.getDataJoin);
-router.post('/testData', user_controller.secret, data_controller.addData);
-router.delete('/testData/:id', user_controller.secret, data_controller.deleteData);
-router.put('/testData/:id', user_controller.secret, data_controller.editData);
+// router.get('/testDataJoin', user_controller.secret, data_controller.getDataJoin);
+// router.post('/testData', user_controller.secret, data_controller.addData);
+// router.delete('/testData/:id', user_controller.secret, data_controller.deleteData);
+// router.put('/testData/:id', user_controller.secret, data_controller.editData);
 
 
 module.exports = router;

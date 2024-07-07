@@ -42,6 +42,7 @@ exports.secret = function (req, res, next) {
 
 exports.login = function (req, res) {
     var query = { email: req.body.email };
+    console.log('query: ', query);
     User.findOne(query, function (err, user) {
         if (err) {
             return res.json({ err })
