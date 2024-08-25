@@ -102,14 +102,14 @@ exports.register = function (req, res, next) {
                 // user.password_confirm = hash;
                 user.save((err, result) => {
                     if (err) { return res.json({ err }) }
-                    res.json({
-                        user: result,
-                        status: true
-                    });
-                    // return res.status(200).send({
-                    //     message: 'Register Success !!',
+                    // res.json({
+                    //     user: result,
                     //     status: true
-                    //   })
+                    // });
+                    return res.status(200).send({
+                        message: 'Register Success !!',
+                        status: true
+                      })
                 })
             })
         } else {

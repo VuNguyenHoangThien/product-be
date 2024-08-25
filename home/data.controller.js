@@ -74,12 +74,13 @@ exports.crawlingData = function (req, resBody) {
     })
 }
 
-exports.getData = function (req, res) {
-    Product.find(function (err, product) {
+// Practice Product
+exports.getProduct = function (req, res) {
+    Product.find((err, product) => {
         if (err) {
             return res.status(404).send({
                 success: 'false',
-                message: 'Lost Connect !!',
+                message: 'Load Product Fail !!',
             })
         } else {
             return res.status(200).send({
@@ -91,6 +92,87 @@ exports.getData = function (req, res) {
     })
 }
 
+exports.getProductById = (req, res) => {
+    var query = { '_id': ObjectID(req.params.id) };
+    Product.find(query, (err, product) => {
+        if (err) {
+            return res.status(404).send({
+                success: 'false',
+                message: 'Load Product Fail !!',
+            })
+        } else {
+            return res.status(200).send({
+                success: 'true',
+                message: 'Successfully !!',
+                data: product
+            })
+        }
+    })
+}
+
+exports.addProduct = (req, res) => {
+    const body = req.body;
+    Product.bulkWrite([
+        {
+            insertOne: {
+                document: body
+            }
+        }
+    ]).then((product, err) => {
+        if (err) {
+            return res.status(404).send({
+                success: 'false',
+                message: 'Add Product Fail !!',
+            })
+        } else {
+            return res.status(200).send({
+                success: 'true',
+                message: 'Add Product Successfully !!',
+                data: body
+            })
+        }
+    });
+}
+
+exports.editProduct = function (req, res) {
+    var query = { '_id': ObjectID(req.params.id) };
+    Product.updateOne(query, {
+        $set:
+            req.body
+    }, (err, product) => {
+        if (err) {
+            return res.status(404).send({
+                success: 'false',
+                message: 'Edit Product Fail !!',
+            })
+        } else {
+            return res.status(200).send({
+                success: 'true',
+                message: 'Save Product Successfully !!',
+                data: req.body
+            })
+        }
+    })
+}
+
+exports.deleteProduct = function (req, res) {
+    var query = { '_id': ObjectID(req.params.id) };
+    Product.deleteOne(query, function (err, product) {
+        if (err) {
+            return res.status(404).send({
+                success: 'false',
+                message: 'Delete Product Fail !!',
+            })
+        } else {
+            return res.status(200).send({
+                success: 'true',
+                message: 'Delete Product Successfully !!',
+            })
+        }
+    })
+}
+
+// Old code
 exports.addData = function (req, res) {
     Product.bulkWrite([
         {

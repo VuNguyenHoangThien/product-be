@@ -27,7 +27,15 @@ const data_controller = require('../home/data.controller');
 router.post('/user-login', user_controller.login);
 router.post('/user-register', user_controller.register)
 
-router.get('/getProduct', user_controller.secret, data_controller.getData);
+router.get('/getProduct', user_controller.secret, data_controller.getProduct);
+
+// without authen
+router.get('/api/v1/allProduct', data_controller.getProduct);
+router.get('/api/v1/productById/:id', data_controller.getProductById);
+router.post('/api/v1/addProduct', data_controller.addProduct);
+router.put('/api/v1/editProduct/:id', data_controller.editProduct);
+router.delete('/api/v1/deleteProduct/:id', data_controller.deleteProduct);
+
 // router.get('/testDataJoin', user_controller.secret, data_controller.getDataJoin);
 // router.post('/testData', user_controller.secret, data_controller.addData);
 // router.delete('/testData/:id', user_controller.secret, data_controller.deleteData);
